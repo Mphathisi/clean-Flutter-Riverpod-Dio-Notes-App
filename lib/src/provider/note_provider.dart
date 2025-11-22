@@ -3,16 +3,8 @@ import '../models/note.dart';
 import '../repositories/note_repository.dart';
 import '../services/note_service.dart';
 
-final noteRepositoryProvider = Provider<NoteRepository>((ref) {
-  return NoteRepository(NoteService());
-});
-
-final noteListProvider = StateNotifierProvider<NoteNotifier, List<Note>>((ref) {
-  final repo = ref.read(noteRepositoryProvider);
-  return NoteNotifier(repo);
-});
-
 class NoteNotifier extends StateNotifier<List<Note>> {
+
   final NoteRepository repository;
   NoteNotifier(this.repository) : super([]) {
     loadNotes();
@@ -38,3 +30,12 @@ class NoteNotifier extends StateNotifier<List<Note>> {
     state = state.where((n) => n.id != id).toList();
   }
 }
+
+final noteRepositoryProvider = Provider<NoteRepository>((ref) {
+  return NoteRepository(NoteService());
+});
+
+final noteListProvider = StateNotifierProvider<NoteNotifier, List<Note>>((ref) {
+  final repo = ref.read(noteRepositoryProvider);
+  return NoteNotifier(repo);
+});
