@@ -1,10 +1,7 @@
-# clean-Flutter-Riverpod-Dio-Notes-App
-
-
 # Flutter Notes App
 **Technologies:** Flutter, Riverpod, Dio, Hive, Animations
 
-A clean architecture notes app with offline caching and smooth animations.
+A clean architecture notes app
 
 ---
 
